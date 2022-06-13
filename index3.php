@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Guess the number</title>
 </head>
 <body>
     
@@ -45,14 +45,14 @@
                         $bb1 = 0;
                     }
                     if($b2 == 1){
-                        $bb2 = 5;
+                        $bb2 = 20;
                     }else{
                         $bb2 = 0;
                     }
                     if($b3 == 0){
-                        $bb3 = 4;
+                        $bb3 = 10;
                     }else if($b3 < 5){
-                        $bb3 = 4 - $b3;
+                        $bb3 = 10 - $b3;
                     }else{
                         $bb3 = -20;
                     }
