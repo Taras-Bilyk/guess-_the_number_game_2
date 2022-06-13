@@ -27,7 +27,7 @@
                 $b1 = 0;
                 $b2 = 0;
                 $b3 = 0;
-                echo("<p>$number</p>");
+                // echo("<p>$number</p>");
                 echo("<h4>Виберіть діапазон</h4>");
                 echo("<select name='answer'>");
                 $v = 1;

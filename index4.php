@@ -7,7 +7,7 @@
     <title>Guess the number of 5</title>
 </head>
 <body>
-    <?php ini_set('display_errors', 1);
+    <?php
         session_start();
         // var_dump($_POST);
         $number = $_POST["number"];
@@ -17,7 +17,7 @@
         $b1 = $_POST["b1"];
         $b2 = $_POST["b2"];
         $b3 = $_POST["b3"];
-        // $answers = [];
+        $answers = [];
         if($number == $answerNumber){
             $b2 = 2;
 
@@ -87,11 +87,7 @@
                 echo("</select>");
             }
 
-            // session_start();
-            // $answersEncode = json_encode($answerNumberOf5P);
-            // $_SESSION["sAnswers"] = $answersEncode;
-
-            // $answersEncode = json_encode($answers);
+            $answersEncode = json_encode($answers);
     
             echo("<input type='hidden' name='number' value='$number'>");
             echo("<input type='hidden' name='trueRangeStart' value='$trueRangeStart'>");
@@ -99,7 +95,7 @@
             echo("<input type='hidden' name='b1' value='$b1'>");
             echo("<input type='hidden' name='b2' value='$b2'>");
             echo("<input type='hidden' name='b3' value='$b3'>");
-            // echo("<input type='hidden' name='answers' value='$answersEncode'>");
+            echo("<input type='hidden' name='answers' value='$answersEncode'>");
             if($answerNumberOf5 != $number){
                 echo("<input type='submit' value='ok' name='ok3'>");
             }

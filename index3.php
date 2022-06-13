@@ -7,7 +7,7 @@
     <title>Guess the number</title>
 </head>
 <body>
-    <?php ini_set('display_errors', 1);
+    <?php
         session_start();
         echo('<form action="index3.php" method="POST">');
         $number = $_POST["number"];
@@ -18,13 +18,17 @@
         $b1 = $_POST["b1"];
         $b2 = $_POST["b2"];
         $b3 = $_POST["b3"];
+        $answers = $_POST["answers"];
+        $answersDecode = json_decode($answers);
+        array_push($answersDecode, $_POST["answerNumberOf5P"]);
 
         
         var_dump($_POST);
 
         // $answersDecode = json_decode($_SESSION["sAnswers"]);
 
-        // echo("<h1>$answersDecode</h1>");
+        // $a = $answersDecode[count($answersDecode)-1];
+        // echo("<h1>$a</h1>");
         
 
         if($b3 < 20){
@@ -87,19 +91,57 @@
     
             if($answerNumberOf5 != $number){
                 echo("<select name='answerNumberOf5P'>");
+
                 if($_POST["number"] <= $trueRangeM){
                     for($i = $trueRangeStart; $i <= $trueRangeM; $i++){
-                            echo("<option value=$i>$i</option>");
+                        $eqv = 0;
+                        $j = 0;
+                        while($j <= count($answersDecode)){
+                            if($i == $answersDecode[$j]){
+                                $eqv = 1;
+                                $j = count($answersDecode) + 1;
+                            }
+                            $j++;
+                        }
+                        if($eqv == 1){
+                            echo("<option value='$i' disabled>$i</option>");
+                        }else{
+                            echo("<option value='$i'>$i</option>");
+                        }
                     }
                 }else{
                     for($i = $trueRangeM+1; $i <= $trueRangeEnd; $i++){
-                        echo("<option value=$i>$i</option>");
+                        $eqv = 0;
+                        $j = 0;
+                        while($j <= count($answersDecode)){
+                            if($i == $answersDecode[$j]){
+                                $eqv = 1;
+                                $j = count($answersDecode) + 1;
+                            }
+                            $j++;
+                        }
+                        if($eqv == 1){
+                            echo("<option value='$i' disabled>$i</option>");
+                        }else{
+                            echo("<option value='$i'>$i</option>");
+                        }
                     }
                 }
                 echo("</select>");
             }
 
-             
+            
+            
+            // if($_POST["number"] <= $trueRangeM){
+            //     for($i = $trueRangeStart; $i <= $trueRangeM; $i++){
+            //             echo("<option value=$i>$i</option>");
+            //     }
+            // }else{
+            //     for($i = $trueRangeM+1; $i <= $trueRangeEnd; $i++){
+            //         echo("<option value=$i>$i</option>");
+            //     }
+            // }
+            
         }else{
             echo("<h4>Ви не вгадали число</h4>");
             echo("<h4>Спроби закінчились ($b3)</h4>");
@@ -111,6 +153,8 @@
             $b3 += 1;
         }
 
+        $answersEncode = json_encode($answersDecode);
+
  
         echo("<input type='hidden' name='number' value='$number'>");
         echo("<input type='hidden' name='trueRangeStart' value='$trueRangeStart'>");
@@ -118,7 +162,7 @@
         echo("<input type='hidden' name='b1' value='$b1'>");
         echo("<input type='hidden' name='b2' value='$b2'>");
         echo("<input type='hidden' name='b3' value='$b3'>");
-        // echo("<input type='hidden' name='answers' value='$answersEncode'>");
+        echo("<input type='hidden' name='answers' value='$answersEncode'>");
         if($b3 < 21){
             if($answerNumberOf5 != $number){
                 echo("<input type='submit' value='ok' name='ok3'>");
