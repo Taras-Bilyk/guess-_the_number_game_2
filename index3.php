@@ -23,7 +23,7 @@
         array_push($answersDecode, $_POST["answerNumberOf5P"]);
 
         
-        var_dump($_POST);
+        // var_dump($_POST);
 
         // $answersDecode = json_decode($_SESSION["sAnswers"]);
 
