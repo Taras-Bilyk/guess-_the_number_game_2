@@ -7,7 +7,8 @@
     <title>Guess the number of 5</title>
 </head>
 <body>
-    <?php
+    <?php ini_set('display_errors', 1);
+        session_start();
         // var_dump($_POST);
         $number = $_POST["number"];
         $answerNumber = $_POST["answerNumber"];
@@ -16,6 +17,7 @@
         $b1 = $_POST["b1"];
         $b2 = $_POST["b2"];
         $b3 = $_POST["b3"];
+        // $answers = [];
         if($number == $answerNumber){
             $b2 = 2;
 
@@ -42,7 +44,7 @@
             // echo("<h5>b2: $b2</h5>");
             // echo("<h5>b3: $b3</h5>");
             echo("<h4>Ви набрали $bbT балів (з максимально можливих 60-и балів)</h4>");
-            session_start();
+            // session_start();
             $_SESSION["sPoints"] += $bbT;
             echo("<a href='index.php'>Play again</a>");
         }else{
@@ -67,10 +69,6 @@
                     echo("<h4>Число менше ніж $answerNumberOf5</h4>");
                 }else if ($answerNumberOf5 < $number){
                     echo("<h4>Число більше ніж $answerNumberOf5</h4>");
-                }else if ($answerNumberOf5 = $number){
-                    echo("<h4>Ви вгадали число!</h4>");
-                    echo("<h4>Число: $answerNumberOf5</h4>");
-                    echo("<a href='index.php'>Play again</a>");
                 }
             }
 
@@ -88,6 +86,12 @@
                 }
                 echo("</select>");
             }
+
+            // session_start();
+            // $answersEncode = json_encode($answerNumberOf5P);
+            // $_SESSION["sAnswers"] = $answersEncode;
+
+            // $answersEncode = json_encode($answers);
     
             echo("<input type='hidden' name='number' value='$number'>");
             echo("<input type='hidden' name='trueRangeStart' value='$trueRangeStart'>");
@@ -95,6 +99,7 @@
             echo("<input type='hidden' name='b1' value='$b1'>");
             echo("<input type='hidden' name='b2' value='$b2'>");
             echo("<input type='hidden' name='b3' value='$b3'>");
+            // echo("<input type='hidden' name='answers' value='$answersEncode'>");
             if($answerNumberOf5 != $number){
                 echo("<input type='submit' value='ok' name='ok3'>");
             }

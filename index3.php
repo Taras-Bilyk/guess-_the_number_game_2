@@ -8,6 +8,7 @@
 </head>
 <body>
     <?php ini_set('display_errors', 1);
+        session_start();
         echo('<form action="index3.php" method="POST">');
         $number = $_POST["number"];
         $trueRangeStart = $_POST["trueRangeStart"];
@@ -17,7 +18,13 @@
         $b1 = $_POST["b1"];
         $b2 = $_POST["b2"];
         $b3 = $_POST["b3"];
-        // var_dump($_POST);
+
+        
+        var_dump($_POST);
+
+        // $answersDecode = json_decode($_SESSION["sAnswers"]);
+
+        // echo("<h1>$answersDecode</h1>");
         
 
         if($b3 < 20){
@@ -41,7 +48,7 @@
                         $bb1 = 0;
                     }
                     if($b2 == 1){
-                        $bb2 = 20;
+                        $bb2 = 10;
                     }else{
                         $bb2 = 0;
                     }
@@ -68,11 +75,14 @@
                     // echo("<h5>b1: $b1</h5>");
                     // echo("<h5>b2: $b2</h5>");
                     // echo("<h5>b3: $b3</h5>");
-                    session_start();
+                    // session_start();
                     $_SESSION["sPoints"] += $bbT;
                     echo("<h4>Ви набрали $bbT балів (з максимально можливих 60-и балів)</h4>");
                     echo("<a href='index.php'>Play again</a>");
                 }
+                // $answersDecode = json_decode($_POST["answers"]);
+                // array_push($answersDecode, $_POST["answerNumberOf5P"]);
+                // $answersEncode = json_encode($answersDecode);
             }
     
             if($answerNumberOf5 != $number){
@@ -82,12 +92,14 @@
                             echo("<option value=$i>$i</option>");
                     }
                 }else{
-                    for($i = $trueRangeM; $i <= $trueRangeEnd; $i++){
+                    for($i = $trueRangeM+1; $i <= $trueRangeEnd; $i++){
                         echo("<option value=$i>$i</option>");
                     }
                 }
                 echo("</select>");
             }
+
+             
         }else{
             echo("<h4>Ви не вгадали число</h4>");
             echo("<h4>Спроби закінчились ($b3)</h4>");
@@ -98,6 +110,7 @@
             echo("<a href='index.php'>Play again</a>");
             $b3 += 1;
         }
+
  
         echo("<input type='hidden' name='number' value='$number'>");
         echo("<input type='hidden' name='trueRangeStart' value='$trueRangeStart'>");
@@ -105,6 +118,7 @@
         echo("<input type='hidden' name='b1' value='$b1'>");
         echo("<input type='hidden' name='b2' value='$b2'>");
         echo("<input type='hidden' name='b3' value='$b3'>");
+        // echo("<input type='hidden' name='answers' value='$answersEncode'>");
         if($b3 < 21){
             if($answerNumberOf5 != $number){
                 echo("<input type='submit' value='ok' name='ok3'>");

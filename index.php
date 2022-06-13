@@ -12,6 +12,10 @@
                 session_start();
                 // session_unset();
                 $sPoints = $_SESSION["sPoints"];
+                // $answers = [];
+                // $answersEncode = json_encode($answers);
+                // $_SESSION["sAnswers"] = $answersEncode;
+                // $sAnswers = $_SESSION["sAnswers"];
                 $number = rand(1, 100);
                 if($sPoints == ""){
                     $_SESSION["sPoints"] = 0;
@@ -23,7 +27,7 @@
                 $b1 = 0;
                 $b2 = 0;
                 $b3 = 0;
-                // echo("<p>$number</p>");
+                echo("<p>$number</p>");
                 echo("<h4>Виберіть діапазон</h4>");
                 echo("<select name='answer'>");
                 $v = 1;
