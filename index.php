@@ -1,20 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guess the number game</title>
-</head>
-<body>
-    <form action="index2.php" method="POST">
-    <?php
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Guess the number game</title>
+    </head>
+    <body>
+        <form action="index2.php" method="POST">
+            <?php
+        session_start();
+        // session_unset();
+        $sPoints = $_SESSION["sPoints"];
         $number = rand(1, 100);
+        if($sPoints == ""){
+            $_SESSION["sPoints"] = 0;
+            echo("<h5>Всього балів: $sPoints</h5>");
+        }else{
+            echo("<h5>Всього балів: $sPoints</h5>");
+        }
         $points = 10;
         $b1 = 0;
         $b2 = 0;
         $b3 = 0;
-        // echo("<p>$number</p>");
+        echo("<p>$number</p>");
         echo("<h4>Виберіть діапазон</h4>");
         echo("<select name='answer'>");
         $v = 1;
@@ -25,6 +34,7 @@
             $v += 10;
         }
         echo("</select>");
+
     
         echo("<input type='hidden' name='number' value='$number'>");
         echo("<input type='hidden' name='points' value='$points'>");

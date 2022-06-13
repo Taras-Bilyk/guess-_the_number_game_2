@@ -42,6 +42,8 @@
             // echo("<h5>b2: $b2</h5>");
             // echo("<h5>b3: $b3</h5>");
             echo("<h4>Ви набрали $bbT балів (з максимально можливих 60-и балів)</h4>");
+            session_start();
+            $_SESSION["sPoints"] += $bbT;
             echo("<a href='index.php'>Play again</a>");
         }else{
             echo("<h4>Ви не вгадали число</h4>");

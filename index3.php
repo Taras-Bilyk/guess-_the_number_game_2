@@ -7,17 +7,13 @@
     <title>Guess the number</title>
 </head>
 <body>
-    
-    <!-- <form action="index4.php" method="POST"> -->
     <?php ini_set('display_errors', 1);
         echo('<form action="index3.php" method="POST">');
-        // $action = "index3.php";
         $number = $_POST["number"];
         $trueRangeStart = $_POST["trueRangeStart"];
         $trueRangeEnd = $_POST["trueRangeEnd"];
         $trueRangeM = $trueRangeStart + 4;
         $answerNumberOf5 = $_POST["answerNumberOf5P"];
-        // $answerNumberOf5 = $_POST["answerNumberOf5P"];
         $b1 = $_POST["b1"];
         $b2 = $_POST["b2"];
         $b3 = $_POST["b3"];
@@ -113,10 +109,6 @@
             }
         }
         echo("</form>");
-       
-        
-    
-        
     ?>
 </body>
 </html>
