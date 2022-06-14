@@ -11,6 +11,7 @@
             <?php
                 session_start();
                 // session_unset();
+                // $_SESSION["sPoints"] = 10000;
                 $sPoints = $_SESSION["sPoints"];
                 // $answers = [];
                 // $answersEncode = json_encode($answers);
@@ -23,6 +24,7 @@
                 }else{
                     echo("<h5>Всього балів: $sPoints</h5>");
                 }
+                echo("<a href='tea.php'>купити чай</a>");
                 $points = 10;
                 $b1 = 0;
                 $b2 = 0;
