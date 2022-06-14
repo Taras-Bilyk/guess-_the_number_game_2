@@ -46,12 +46,14 @@
                         $water -= 50;
                         
                         echo("<p>Налито $inOneCup мл води</p>");
-                        $_SESSION["sPoints"] = $_SESSION["sPoints"] - $inOneCup / 5;
+                        
                     }
                     if($water == 0){
+                        $_SESSION["sPoints"] = $_SESSION["sPoints"] - $inOneCup / 5;
                         echo("<p>вода закінчилась</p>");
                     }else{
                         echo("<p>кружка повна</p>");
+                        $_SESSION["sPoints"] = $_SESSION["sPoints"] - $inOneCup / 5;
                     }
                     $sugarInCup = round(($sugar/$waterAll)*$inOneCup, 2);
                     // $sugarInCup = ($sugar/250)*$inOneCup;

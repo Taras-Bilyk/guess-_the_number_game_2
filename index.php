@@ -11,7 +11,7 @@
             <?php
                 session_start();
                 // session_unset();
-                // $_SESSION["sPoints"] = 10000;
+                // $_SESSION["sPoints"] = 100;
                 $sPoints = $_SESSION["sPoints"];
                 // $answers = [];
                 // $answersEncode = json_encode($answers);
