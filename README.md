@@ -1,4 +1,4 @@
-# TEA PROJECT SITE
+# GUESS THE NUMBER PROJECT SITE
 
 A website created to improve my PHP skills.
 
